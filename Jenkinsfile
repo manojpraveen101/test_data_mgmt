@@ -7,18 +7,44 @@ pipeline {
     }
 
     stages {
+
         stage("Dependency install") {
             steps {
-                echo 'Hello world!'
+                echo 'Airflow installation started'
                 sh "pip install apache-airflow==${AIRFLOW_VERSION}"
-//                 sh "airflow version"
             }
         }
-        stage("Running test") {
+//         stage("Running test") {
+//             steps {
+//                 sh "python3 test_data_mgmt/get_airflow_backfill_commands.py"
+//             }
+//         }
+        stage("Git clone") {
             steps {
-                sh "python3 test_data_mgmt/get_airflow_backfill_commands.py"
+                sh "mkdir drivenbrands"
+                dir('drivenbrands') {
+                    echo 'git clone started'
+                    git credentialsId: 'github_credentials', url: 'https://github.com/manojpraveen101/test_data_mgmt.git'
+                    }
+                sh "cd drivenbrands"
+                sh "ls"
             }
+        }
+
+        post {
+
+        always {
+            echo 'I will always say Hello again!'
+        }
+        success {
+            echo 'Success'
+        }
+        failure {
+            echo 'Failure'
+        }
+
         }
 
     }
 }
+
