@@ -37,8 +37,9 @@ pipeline {
                         sh "ls"
                     }
                 sh "ls"
+                echo "the output file contents is"
+                sh "cat airflow_backfill.txt"
                 }
-                sh "ls"
             }
         }
 
