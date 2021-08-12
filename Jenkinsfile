@@ -21,8 +21,6 @@ pipeline {
                 dir('drivenbrands5') {
                     echo 'git clone started'
                     git credentialsId: 'github_credentials', url: 'https://github.com/manojpraveen101/test_data_mgmt.git'
-                    sh "ls"
-
                     }
 
             }
@@ -31,12 +29,7 @@ pipeline {
         stage("Running test") {
             steps {
                 dir('drivenbrands5'){
-                sh "ls"
                 sh "python3 test_data_mgmt/get_airflow_backfill_commands.py"
-                dir('test_data_mgmt'){
-                        sh "ls"
-                    }
-                sh "ls"
                 echo "the output file contents is"
                 sh "cat airflow_backfill.txt"
                 }
@@ -45,7 +38,6 @@ pipeline {
 
     }
 
-
         post {
 
         always {
@@ -53,14 +45,13 @@ pipeline {
         }
         success {
             echo 'Success'
+            emailext body: 'Status of pipeline :Success', subject: 'Pipeline Status', to: 'manojpraveenkgm@gmail.com'
         }
         failure {
             echo 'Failure'
+            emailext body: 'Status of pipeline :Failure', subject: 'Pipeline Status', to: 'manojpraveenkgm@gmail.com'
         }
 
         }
 
 }
-//
-// sh "rm -rf drivenbrands"
-// sh "rm -rf drivenbrands1"
