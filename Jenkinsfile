@@ -32,6 +32,7 @@ pipeline {
         }
 
         stage("Post Condition") {
+        steps {
         post {
 
         always {
@@ -44,6 +45,7 @@ pipeline {
             echo 'Failure'
         }
 
+        }
         }
         }
 
