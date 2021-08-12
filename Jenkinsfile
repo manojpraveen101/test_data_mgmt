@@ -46,6 +46,7 @@ pipeline {
         success {
             echo 'Success'
             emailext body: 'Status of pipeline :Success', subject: 'Pipeline Status', to: 'manojpraveenkgm@gmail.com'
+            mail bcc: '', body: 'done', cc: '', from: '', replyTo: '', subject: 'Pipeline status', to: 'manojpraveenkgm@gmail.com'
         }
         failure {
             echo 'Failure'
