@@ -31,6 +31,14 @@ pipeline {
             }
         }
 
+        stage("Running test") {
+            steps {
+                dir('drivenbrands'){
+                sh "python3 get_airflow_backfill_commands.py"
+                }
+            }
+        }
+
         stage("Post Condition") {
         steps {
         post {
