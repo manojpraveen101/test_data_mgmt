@@ -26,10 +26,10 @@ pipeline {
             }
         }
 
-        stage("Running test") {
+        stage("Executing the file") {
             steps {
                 dir('drivenbrands5'){
-//                 sh "python3 test_data_mgmt/get_airflow_backfill_commands.py"
+                sh "python3 test_data_mgmt/get_airflow_backfill_commands.py"
                 echo "the output file contents is"
                 sh "cat airflow_backfill.txt"
                 }
