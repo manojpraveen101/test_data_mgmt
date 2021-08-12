@@ -22,8 +22,9 @@ pipeline {
                     echo 'git clone started'
                     git credentialsId: 'github_credentials', url: 'https://github.com/manojpraveen101/test_data_mgmt.git'
                     sh "ls"
-                    sh "cd test_data_mgmt"
-                    sh "ls"
+                    dir('test_data_mgmt'){
+                        sh "ls"
+                    }
                     }
 
             }
@@ -44,7 +45,6 @@ pipeline {
         post {
 
         always {
-            sh "rm -rf drivenbrands6"
             sh "rm -rf drivenbrands5"
         }
         success {
