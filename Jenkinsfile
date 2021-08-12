@@ -10,8 +10,6 @@ pipeline {
 
         stage("Dependency install") {
             steps {
-                sh "rm -rf drivenbrands4"
-                sh "rm -rf drivenbrands5"
                 echo 'Airflow installation started'
                 sh "pip install apache-airflow==${AIRFLOW_VERSION}"
             }
@@ -19,20 +17,21 @@ pipeline {
 
         stage("Git clone") {
             steps {
-                sh "mkdir drivenbrands6"
-                dir('drivenbrands6') {
+                sh "mkdir drivenbrands5"
+                dir('drivenbrands5') {
                     echo 'git clone started'
                     git credentialsId: 'github_credentials', url: 'https://github.com/manojpraveen101/test_data_mgmt.git'
                     sh "ls"
+                    sh "cd test_data_mgmt"
+                    sh "ls"
                     }
-//                 sh "cd drivenbrands6"
-//                 sh "ls"
+
             }
         }
 
         stage("Running test") {
             steps {
-                dir('drivenbrands6'){
+                dir('drivenbrands5'){
                 sh "python3 test_data_mgmt/get_airflow_backfill_commands.py"
                 sh "ls"
                 }
@@ -45,7 +44,8 @@ pipeline {
         post {
 
         always {
-            echo 'I will always say Hello again!'
+            sh "rm -rf drivenbrands6"
+            sh "rm -rf drivenbrands5"
         }
         success {
             echo 'Success'
