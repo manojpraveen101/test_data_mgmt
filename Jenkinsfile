@@ -22,9 +22,7 @@ pipeline {
                     echo 'git clone started'
                     git credentialsId: 'github_credentials', url: 'https://github.com/manojpraveen101/test_data_mgmt.git'
                     sh "ls"
-                    dir('test_data_mgmt'){
-                        sh "ls"
-                    }
+
                     }
 
             }
@@ -34,7 +32,9 @@ pipeline {
             steps {
                 dir('drivenbrands5'){
                 sh "python3 test_data_mgmt/get_airflow_backfill_commands.py"
-                sh "ls"
+                dir('test_data_mgmt'){
+                        sh "ls"
+                    }
                 }
             }
         }
