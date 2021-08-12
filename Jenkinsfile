@@ -31,11 +31,14 @@ pipeline {
         stage("Running test") {
             steps {
                 dir('drivenbrands5'){
+                sh "ls"
                 sh "python3 test_data_mgmt/get_airflow_backfill_commands.py"
                 dir('test_data_mgmt'){
                         sh "ls"
                     }
+                sh "ls"
                 }
+                sh "ls"
             }
         }
 
