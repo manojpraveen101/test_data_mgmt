@@ -16,7 +16,7 @@ pipeline {
         }
         stage("Running test") {
             steps {
-                sh "python3 test_data_management/get_airflow_backfill_commands.py"
+                sh "python3 test_data_mgmt/get_airflow_backfill_commands.py"
             }
         }
 
