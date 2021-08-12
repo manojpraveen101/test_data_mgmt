@@ -14,28 +14,24 @@ pipeline {
                 sh "pip install apache-airflow==${AIRFLOW_VERSION}"
             }
         }
-//         stage("Running test") {
-//             steps {
-//                 sh "python3 test_data_mgmt/get_airflow_backfill_commands.py"
-//             }
-//         }
+
         stage("Git clone") {
             steps {
-                sh "mkdir drivenbrands4"
-                dir('drivenbrands4') {
+                sh "mkdir drivenbrands5"
+                dir('drivenbrands5') {
                     echo 'git clone started'
                     git credentialsId: 'github_credentials', url: 'https://github.com/manojpraveen101/test_data_mgmt.git'
                     sh "ls"
                     }
-                sh "cd drivenbrands4"
+                sh "cd drivenbrands5"
                 sh "ls"
             }
         }
 
         stage("Running test") {
             steps {
-                dir('drivenbrands4'){
-                sh "python3 get_airflow_backfill_commands.py"
+                dir('drivenbrands5'){
+                sh "python3 test_data_mgmt/get_airflow_backfill_commands.py"
                 }
             }
         }
