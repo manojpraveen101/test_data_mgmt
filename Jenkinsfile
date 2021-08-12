@@ -21,19 +21,20 @@ pipeline {
 //         }
         stage("Git clone") {
             steps {
-                sh "mkdir drivenbrands3"
-                dir('drivenbrands3') {
+                sh "mkdir drivenbrands4"
+                dir('drivenbrands4') {
                     echo 'git clone started'
                     git credentialsId: 'github_credentials', url: 'https://github.com/manojpraveen101/test_data_mgmt.git'
+                    sh "ls"
                     }
-                sh "cd drivenbrands3"
+                sh "cd drivenbrands4"
                 sh "ls"
             }
         }
 
         stage("Running test") {
             steps {
-                dir('drivenbrands3'){
+                dir('drivenbrands4'){
                 sh "python3 get_airflow_backfill_commands.py"
                 }
             }
