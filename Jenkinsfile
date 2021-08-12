@@ -10,6 +10,8 @@ pipeline {
 
         stage("Dependency install") {
             steps {
+                sh "rm -rf drivenbrands"
+                sh "rm -rf drivenbrands1"
                 echo 'Airflow installation started'
                 sh "pip install apache-airflow==${AIRFLOW_VERSION}"
             }
@@ -21,8 +23,8 @@ pipeline {
 //         }
         stage("Git clone") {
             steps {
-                sh "mkdir drivenbrands1"
-                dir('drivenbrands1') {
+                sh "mkdir drivenbrands2"
+                dir('drivenbrands2') {
                     echo 'git clone started'
                     git credentialsId: 'github_credentials', url: 'https://github.com/manojpraveen101/test_data_mgmt.git'
                     }
