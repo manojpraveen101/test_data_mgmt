@@ -6,6 +6,7 @@ pipeline {
         AIRFLOW_VERSION = '1.10.10'
     }
 
+
     stages {
 
         stage("Dependency install") {
