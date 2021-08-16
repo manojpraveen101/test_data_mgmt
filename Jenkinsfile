@@ -41,7 +41,8 @@ pipeline {
         post {
 
         always {
-            sh "rm -rf drivenbrands5"
+            cleanWs()
+//             sh "rm -rf drivenbrands5"
         }
         success {
             echo 'Success'
