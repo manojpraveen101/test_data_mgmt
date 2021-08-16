@@ -3,31 +3,12 @@ pipeline {
     agent any
 
     stages {
-        stage("list data") {
-            steps {
-                sh "ls"
-
-            }
-        }
-
-//         stage("Git clone") {
-//             steps {
-//                 sh "mkdir drivenbrands5"
-//                 dir('drivenbrands5') {
-//                     echo 'git clone started'
-//                     git credentialsId: 'github_credentials', url: 'https://github.com/manojpraveen101/test_data_mgmt.git'
-//                     }
-//
-//             }
-//         }
 
         stage("Executing the file") {
             steps {
-//                 dir('drivenbrands5'){
                 sh "python3 test_data_mgmt/get_airflow_backfill_commands.py"
                 echo "the output file contents is"
                 sh "cat airflow_backfill.txt"
-//                 }
             }
         }
 
