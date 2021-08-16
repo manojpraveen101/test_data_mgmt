@@ -8,7 +8,7 @@ def backfill_commands(dag_ids):
     previous_date = datetime.datetime.strftime(datetime.datetime.today() - datetime.timedelta(1), '%Y-%m-%d')
     with open('airflow_backfill.txt', 'a') as airflow:
         for dag_id in dag_ids:
-            backfill_string = "airflow backfill -m " + dag_id + " -s " + previous_date + " -e " + today
+            backfill_string = "airflow backfill -m " + dag_id + " -s " + today + " -e " + today
             backfill_string = backfill_string + "\n"
             airflow.write(backfill_string)
 
