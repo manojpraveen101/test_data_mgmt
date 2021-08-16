@@ -42,7 +42,6 @@ pipeline {
 
         always {
             cleanWs()
-//             sh "rm -rf drivenbrands5"
         }
         success {
             echo 'Success'
