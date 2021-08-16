@@ -3,6 +3,11 @@ pipeline {
     agent any
 
     stages {
+        stage("list data") {
+            steps {
+                sh "ls"
+            }
+        }
 
         stage("Git clone") {
             steps {
