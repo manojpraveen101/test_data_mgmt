@@ -21,7 +21,7 @@ pipeline {
         }
         success {
             echo 'Success'
-            mail bcc: '', body: 'Status of pipeline :Success  $BUILD_URL', cc: '', from: '', replyTo: '', subject: 'Pipeline status', to: 'manojpraveenkgm@gmail.com'
+            mail bcc: '', body: 'Status of pipeline :Success  ${BUILD_URL}', cc: '', from: '', replyTo: '', subject: 'Pipeline status', to: 'manojpraveenkgm@gmail.com'
         }
         failure {
             echo 'Failure'
