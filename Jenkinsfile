@@ -9,8 +9,9 @@ pipeline {
                 sh "python3 test_data_mgmt/get_airflow_backfill_commands.py"
                 echo "the output file contents is"
                 sh "cat airflow_backfill.txt"
-                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-
+                echo "Running ${env.BUILD_ID}"
+                echo "Running ${env.BUILD_NUMBER}"
+                echo '${env.BUILD_URL}'
             }
         }
 
