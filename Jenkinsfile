@@ -21,8 +21,7 @@ pipeline {
         }
         success {
             echo 'Success'
-            echo '${env.BUILD_URL}'
-            mail bcc: '', body: 'Status of pipeline :Success', cc: '', from: '', replyTo: '', subject: 'Pipeline status', to: 'manojpraveenkgm@gmail.com'
+            mail bcc: '', body: 'Status of pipeline :Success  ${env.BUILD_URL}', cc: '', from: '', replyTo: '', subject: 'Pipeline status', to: 'manojpraveenkgm@gmail.com'
         }
         failure {
             echo 'Failure'
