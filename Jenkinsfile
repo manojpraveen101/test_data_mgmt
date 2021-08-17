@@ -11,7 +11,7 @@ pipeline {
                 sh "cat airflow_backfill.txt"
                 echo "Running ${env.BUILD_ID}"
                 echo "Running ${env.BUILD_NUMBER}"
-                echo '${env.BUILD_URL}'
+                echo 'Running ${env.BUILD_URL}'
             }
         }
 
